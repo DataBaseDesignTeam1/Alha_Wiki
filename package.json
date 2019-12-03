@@ -1,0 +1,22 @@
+{
+  "name": "alha_wiki",
+  "version": "1.0.0",
+  "description": "Alha_Wiki",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DataBaseDesignTeam1/Alha_Wiki.git"
+  },
+  "author": "dongwuk & youngjae",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DataBaseDesignTeam1/Alha_Wiki/issues"
+  },
+  "homepage": "https://github.com/DataBaseDesignTeam1/Alha_Wiki#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
