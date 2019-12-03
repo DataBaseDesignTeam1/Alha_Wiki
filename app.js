@@ -29,11 +29,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(morgan("dev"));
 
-app.use(express.static('views'));
+// app.use(express.static('views'));
 
-app.engine('html', require(`ejs`).renderFile);
-app.set(`view engine`, `html`);
+// app.engine('html', require(`ejs`).renderFile);
+// app.set(`view engine`, `html`);
 
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
 
 
 app.use(routes.main, globalRouter);

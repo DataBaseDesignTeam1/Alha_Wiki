@@ -1,6 +1,9 @@
 import express from "express";
 import routes from "../routes";
 import { main, login, logout, signup } from "../controllers/globalController";
+import { connection } from "../db";
+
+
 
 const globalRouter = express.Router();
 
@@ -12,7 +15,11 @@ globalRouter.get(routes.logout, logout);
 globalRouter.get(routes.signup, signup);
 
 
-globalRouter.get(routes.recommand_alba, (req, res, next) => {
+globalRouter.get(routes.recommand, (req, res, next) => {
+    var user_index = req.params.user_index;
+
+    console.log({user_index : user_index});
+
     res.send(`RECOMMAND_ALBA`);
 });
 
@@ -45,10 +52,19 @@ globalRouter.get(routes.in_big_category, (req, res, next) => {
 
     console.log(`bigCategory : ${bigCategory}`);
 
-    res.send('bigCategory');
+    connection.query('SELECT * FROM big_category WHERE ?', { big_category_index: bigCategory }, function (error, results, fields) {
+        if (error) throw error;
+        // connected!
+        console.log(results);
+
+        res.send('bigCategory');
+    });
+
+
 });
 
-
-
 globalRouter.get(routes.main, main);
+
+
+
 export default globalRouter;

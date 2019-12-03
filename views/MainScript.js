@@ -1,4 +1,20 @@
-$(document).ready(function(){
+$(document).ready(function(){    
+    var allData = { };
+    var tmp = JSON.stringify(allData);
+    $.ajax({
+        type:"GET",
+        url: "http://localhost:4000/",
+        data: tmp,
+        contentType  : "application/json",
+        cache : false,
+        processData: false,
+        success: function (data) {
+            console.log(data);   
+        },error:function(data){
+            alert("error");
+        }
+    }); 
+
     var seoul = ["동작구", "동대문구", "종로구"];
     var incheon = ["중구", "동구" ,"미추홀구", "연수구", "남동구"]
     var busan = ["강서구", "금정구", "북구", "동래구", "해운대구"]

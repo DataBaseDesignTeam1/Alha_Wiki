@@ -14,7 +14,7 @@ const LOGIN = "/login";
 const LOGOUT = "/logout";
 const SIGNUP = "/signup";
 
-const RECOMMANDALBA = "/recommand_alba";
+const RECOMMAND = "/recommand/:user_index";
 
 const SELECTBUSINESS = "/category/:bigc_id/:smallc_id/:business_id";
 const ALBA_WIKI = "/category/:bigc_id/:smallc_id"
@@ -26,7 +26,7 @@ const routes = {
     login: LOGIN,
     logout: LOGOUT,
     signup: SIGNUP,
-    recommand_alba: RECOMMANDALBA,
+    recommand: RECOMMAND,
 
     select_business: SELECTBUSINESS,
     albawiki: ALBA_WIKI,
