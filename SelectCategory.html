@@ -23,7 +23,9 @@
             box-shadow: 0 0 0 0.1rem powderblue;
             border-radius: 12px;
             margin: 10px;
-            padding-top: 20px;
+            padding-top: 10px;
+            display: flex;
+            flex-direction : column;
         }
         #BigCategory {
             background-color: powderblue;
@@ -63,13 +65,29 @@
             margin: 2px;
             flex-grow: 1;
         }
+        #Login {
+            float: Right;
+            margin-right: 15px;
+            padding-right : 10px;
+        }
+        #UserId {
+            float: Right;
+            margin-right: 15px;
+            padding-right : 10px;
+            text-align: right;
+        }
+        #LogOut {
+            margin-left: 15px;
+        }
         
     </style>
 </head>
 <body>
     <div id = "main">
         <div id = "MainHeader">
-            <h1>AlBA WIKI</h1>
+            <div>
+                <h1>AlBA WIKI</h1>
+            </div>
         </div>
         <div id = "BigCategory">
             <h1 id = "BigCategoryName"></h1>
