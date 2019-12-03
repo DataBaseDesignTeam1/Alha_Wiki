@@ -1,0 +1,23 @@
+{
+  "name": "Alha_Wiki",
+  "version": "1.0.0",
+  "description": "Alha_Wiki",
+  "main": "AlbaWiki.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DataBaseDesignTeam1/Alha_Wiki.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DataBaseDesignTeam1/Alha_Wiki/issues"
+  },
+  "homepage": "https://github.com/DataBaseDesignTeam1/Alha_Wiki#readme",
+  "dependencies": {
+    "mysql": "^2.17.1"
+  }
+}
