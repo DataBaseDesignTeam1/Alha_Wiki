@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="jquery-3.4.1.min.js"></script>
-    <script src="MainScript.js"></script>
+    <script src="SelectCategoryScript.js"></script>
     <title>Alba_Wiki</title>
     <style>
         html,
@@ -15,7 +15,7 @@
             background-attachment: fixed;
         }
 
-        #Main {
+        #main {
             width: 100%;
             height: 100%;
             display: flex;
@@ -32,22 +32,27 @@
             flex-direction: column;
         }
 
-        #SearchLocal {
-            padding-top: 20px;
+        #BigCategory {
+            background-color: powderblue;
+            box-shadow: 0 0 0 0.1rem powderblue;
+            border-radius: 12px;
+            margin: 10px;
+            padding-top: 12px;
         }
 
-        #MainCategory {
+        #SmallCategory {
             display: flex;
             flex-direction: row;
-            height: 70%;
+            height: 80%;
         }
 
         div {
             text-align: center;
             flex-grow: 1;
+
         }
 
-        .BigCategorys {
+        .SmallCategorys {
             flex-grow: 1;
 
             display: flex;
@@ -55,32 +60,20 @@
 
         }
 
-        .BigCategoryItem {
+        .SmallCategoryItem {
             background-color: powderblue;
             flex-grow: 1;
             padding-top: 18%;
             margin: 10px;
-            box-shadow: 0 0 0 0.1rem powderblue;
-            border-radius: 12px;
-        }
 
-        #RecommandSection {
-            background-color: powderblue;
-            flex-grow: 1;
-            padding: 3%;
-            margin: 10px;
             box-shadow: 0 0 0 0.1rem powderblue;
             border-radius: 12px;
-            font-size: 2rem;
         }
 
         select {
             padding: 3px;
             margin: 2px;
             flex-grow: 1;
-            font-size: 2rem;
-            font-weight: bold;
-            line-height: 2;
         }
 
         #Login {
@@ -103,46 +96,35 @@
 </head>
 
 <body>
-    <div id="Main">
+    <div id="main">
         <div id="MainHeader">
             <div>
                 <h1>AlBA WIKI</h1>
             </div>
         </div>
-        <div id="SearchLocal">
-            <select name="State" id="state">
-                <option value="">시/군 선택</option>
-                <option value="Seoul">서울특별시</option>
-                <option value="Busan">부산</option>
-                <option value="Incheon">인천</option>
-                <option value="Deajean">대전</option>
-            </select>
-            <select name="City" id="city">
-                <option value="">구/군 선택</option>
-            </select>
+        <div id="BigCategory">
+            <h1 id="BigCategoryName">
+                <% if(bigname.data.length != 0){%>
+                <%= bigname.data[0].name%>
+                <%} %>
+            </h1>
         </div>
-        <div id="MainCategory">
-
-            <% for(var i = 0; i < big_categories.data.length; i++) { %>
-
+        <div id="SmallCategory">
+            <% for(var i = 0; i < small_categories.data.length; i++) { %>
+            
             <% if(i % 3 == 0) {%>
                 <% if(i != 0) {%>
-                    </div>
+                </div>
                 <% } %>
-                <div class="BigCategorys">
+                <div class="SmallCategorys">
             <% } %>
 
-            <div class="BigCategoryItem" OnClick="location.href = `http://localhost:4000/category/<%= big_categories.data[i].index%>`">
-                <%= big_categories.data[i].name %>
-            </div>
+                <div class="SmallCategoryItem">
+                    <%= small_categories.data[i].name %>
+                </div>
 
             <% } %>
-
-        </div>
-        <div id="RecommandSection">
-            추천알바
-        </div>
-
+    </div>
     </div>
 </body>
 

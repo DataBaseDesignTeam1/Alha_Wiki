@@ -1,8 +1,7 @@
 import express from "express";
 import routes from "../routes";
-import { main, login, logout, signup } from "../controllers/globalController";
+import { main, login, logout, signup, in_big_category } from "../controllers/globalController";
 import { connection } from "../db";
-
 
 
 const globalRouter = express.Router();
@@ -47,21 +46,8 @@ globalRouter.get(routes.albawiki, (req, res, next) => {
     res.send('big & small Category');
 });
 
-globalRouter.get(routes.in_big_category, (req, res, next) => {
-    var bigCategory = req.params.bigc_id;
 
-    console.log(`bigCategory : ${bigCategory}`);
-
-    connection.query('SELECT * FROM big_category WHERE ?', { big_category_index: bigCategory }, function (error, results, fields) {
-        if (error) throw error;
-        // connected!
-        console.log(results);
-
-        res.send('bigCategory');
-    });
-
-
-});
+globalRouter.get(routes.in_big_category, in_big_category);
 
 globalRouter.get(routes.main, main);
 
