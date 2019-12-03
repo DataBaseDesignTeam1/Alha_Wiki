@@ -23,7 +23,9 @@
             box-shadow: 0 0 0 0.1rem powderblue;
             border-radius: 12px;
             margin: 10px;
-            padding-top: 20px;
+            padding-top: 10px;
+            display: flex;
+            flex-direction : column;
         }
         #SearchLocal { 
             padding-top: 20px;
@@ -45,13 +47,22 @@
             flex-direction: column;
             
         }
-        .BigCategoryItem {
+        .BigCategoryItem{
             background-color: powderblue;
             flex-grow: 1;
             padding-top: 18%;
             margin: 10px;
             box-shadow: 0 0 0 0.1rem powderblue;
             border-radius: 12px;
+        }
+        #RecommandSection {
+            background-color: powderblue;
+            flex-grow: 1;
+            padding: 3%;
+            margin: 10px;
+            box-shadow: 0 0 0 0.1rem powderblue;
+            border-radius: 12px;
+            font-size:2rem;
         }
         select {
             padding : 3px;
@@ -61,13 +72,28 @@
             font-weight: bold;
             line-height: 2;
         }
-        
+        #Login {
+            float: Right;
+            margin-right: 15px;
+            padding-right : 10px;
+        }
+        #UserId {
+            float: Right;
+            margin-right: 15px;
+            padding-right : 10px;
+            text-align: right;
+        }
+        #LogOut {
+            margin-left: 15px;
+        }
     </style>
 </head>
 <body>
     <div id = "Main">
         <div id = "MainHeader">
-            <h1>AlBA WIKI</h1>
+            <div>
+                <h1>AlBA WIKI</h1>
+            </div>
         </div>
         <div id = "SearchLocal">
             <select name="State" id="state">
@@ -116,6 +142,10 @@
                 </div>
             </div>            
         </div>
+        <div id ="RecommandSection">
+                추천알바
+        </div>
+
     </div>
 </body>
 </html>
