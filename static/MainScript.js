@@ -1,4 +1,16 @@
-$(document).ready(function(){    
+$(document).ready(function(){ 
+    // Here I would like to call the Python interpreter with Python function
+    //arrOfStrings = openSomehowPythonInterpreter("../recommend_system.py", "dd()");
+    //~/recommend_system.py
+    var aa = 3;
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:4000/static/recommand_system.py",
+        data: {param: aa}
+      }).done(function( o ) {
+         // do something
+      });
+
     var allData = { };
     var tmp = JSON.stringify(allData);
     $.ajax({

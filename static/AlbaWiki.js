@@ -10,6 +10,7 @@ $(document).ready(function () {
       $('#MainHeader').prepend(' <div id = "UserId"><button id = "Login">로그인</button></div>');
     } else {
       $('#Login').remove();
+      $('#Wiki').removeAttr('readonly');
       $('#MainHeader').prepend('<div id = "UserId"> User Id :' + UserId + '<button id = "LogOut">로그아웃</button></div>');
     }
   }
@@ -50,6 +51,8 @@ $(document).ready(function () {
   });
   $('#LogOut').click(function () {
     localStorage.removeItem("UserId");
+    //$( '#Wiki' ).attr( 'readonly', 'readonly' );
+    location.href =location.href;
     changLoginBtn("");
   })
   $(document).on("click", "#Login", function () {
