@@ -144,11 +144,28 @@ export const alba_wiki = (req, res, next) => {
     
     var sql = `SELECT business_name, tip, recruit_url, is_recruiting, update_date, update_id FROM business WHERE ?`;
     connection.query(sql, { business_index : business_id }, (error, business, fields) => {
-        
+        if(error) throw error;
 
-        var sql = `SELECT * FROM review WHERE ?`;
-        connection.query(sql, { business_index : business_id }, (error, reviews, fields) => {
-            console.log(reviews);
+        var sql = `SELECT a.content, a.star_point, a.write_date, b.name FROM review AS a JOIN member AS b ON a.id = b.id WHERE a.business_index = ?`;
+        connection.query(sql, [business_id], (error, results, fields) => {
+            if(error) throw error;
+
+            // console.log(results);
+            var reviews = new Array();
+            results.forEach(element => {
+                var review = {
+                    content: element.content,
+                    star_point: element.star_point,
+                    write_date: element.write_date,
+                    writer: element.name
+                }
+                reviews.push(review);
+            });
+            var data = {
+                data: reviews
+            }
+
+            console.log(data);
         });
 
         res.render('albawiki', {

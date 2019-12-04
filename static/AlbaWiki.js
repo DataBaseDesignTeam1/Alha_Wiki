@@ -31,11 +31,14 @@ $(document).ready(function(){
         }
       }
       function addPostedStar(star){
+
         $('.Post').append(' <div class = "PostItem">  <div class="star-box"> <span class="stared star_left"></span> <span class="stared star_right"></span> <span class="stared star_left"></span> <span class="stared star_right"></span> <span class="stared star_left"></span> <span class="stared star_right"></span> <span class="stared star_left"></span> <span class="stared star_right"></span> <span class="stared star_left"></span> <span class="stared star_right"></span> 후기 2</div></div>');
         var temp = $('.star-box').last()[0];
         for(var i=0; i<=star; i++){
           $(temp.getElementsByClassName("stared")).eq(i).addClass("on");
         }
+
+        
       }
       $('#Login').click(function(){
         localStorage.setItem('beforeLoginPage',"AlbaWiki.html");
