@@ -126,7 +126,7 @@ export const get_select_business = (req, res, next) => {
         }
         // console.log(data);
         // console.log(indexes.data);
-        
+
         res.render('select_business', {
             indexes: indexes,
             businesses: data
@@ -149,7 +149,7 @@ export const post_select_business = (req, res, next) => {
     }
 
     var sql = `SELECT business_index, business_name, business_state, business_city, business_detail_address FROM business WHERE small_category_index=? AND business_state=? AND business_city=? ORDER BY business_index`;
-    connection.query(sql, [ smallCategory_id, state, city ], (error, results, fields) => {
+    connection.query(sql, [smallCategory_id, state, city], (error, results, fields) => {
         if (error) throw error;
         console.log(results);
         var businesses = new Array();
@@ -170,7 +170,7 @@ export const post_select_business = (req, res, next) => {
         }
         // console.log(data);
         // console.log(indexes.data);
-        
+
 
         res.json(data);
     });
@@ -180,14 +180,14 @@ export const get_alba_wiki = (req, res, next) => {
     var bigCategory_id = req.params.bigc_id;
     var smallCategory_id = req.params.smallc_id;
     var business_id = req.params.business_id;
-    
+
     var sql = `SELECT business_name, tip, recruit_url, is_recruiting, update_date, update_id FROM business WHERE ?`;
-    connection.query(sql, { business_index : business_id }, (error, business, fields) => {
-        if(error) throw error;
+    connection.query(sql, { business_index: business_id }, (error, business, fields) => {
+        if (error) throw error;
 
         var sql = `SELECT a.content, a.star_point, a.write_date, b.name FROM review AS a JOIN member AS b ON a.id = b.id WHERE a.business_index = ?`;
         connection.query(sql, [business_id], (error, results, fields) => {
-            if(error) throw error;
+            if (error) throw error;
 
             // console.log(results);
             var reviews = new Array();
@@ -217,8 +217,8 @@ export const post_write_review = (req, res, next) => {
     // console.log(req.body);
 
     var sql = 'SELECT business_index FROM business WHERE ?';
-    connection.query(sql, { business_name : req.body.businessName },(error, results, fields) => {
-        if(error) throw error;
+    connection.query(sql, { business_name: req.body.businessName }, (error, results, fields) => {
+        if (error) throw error;
 
         // console.log(results);
 
@@ -228,17 +228,17 @@ export const post_write_review = (req, res, next) => {
         // console.log(`input_date : ${input_date}`);
         var content = req.body.content;
         var star_point = req.body.star_point;
-        var input_date = date.getFullYear() + "-" + ("0"+(date.getMonth()+1)).slice(-2) + "-" + ("0"+date.getDate()).slice(-2);
+        var input_date = date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2);
         var business_index = results[0].business_index;
         var userId = req.body.userId;
 
         var params = [content, star_point, input_date, business_index, userId];
         // console.log(params);
         connection.query(sql, params, (error, rows, fields) => {
-            if(error) throw error;
+            if (error) throw error;
 
             console.log(`write a review`);
-        });        
+        });
     });
 }
 
@@ -257,8 +257,8 @@ export const post_enroll_member = (req, res, next) => {
 
     var params = [id, pw, name, age, state, city];
 
-    connection.query(sql, params,(error, results, fields) => {
-        if(error) throw error;
+    connection.query(sql, params, (error, results, fields) => {
+        if (error) throw error;
 
         console.log('sign up new member');
     });
@@ -274,15 +274,15 @@ export const post_update_tip = (req, res, next) => {
     var tip = req.body.tip;
     var recruit_url = req.body.recruit_url;
     var is_recruiting = req.body.is_recruiting;
-    var update_date = date.getFullYear() + "-" + ("0"+(date.getMonth()+1)).slice(-2) + "-" + ("0"+date.getDate()).slice(-2);
+    var update_date = date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2);
     var update_id = req.body.userId;
-    
+
     var businessName = req.body.businessName;
 
     var params = [tip, recruit_url, is_recruiting, update_date, update_id, businessName];
 
     connection.query(sql, params, (error, results, fields) => {
-        if(error) throw error;
+        if (error) throw error;
 
         // console.log(results);
         console.log("update business tip");
@@ -295,11 +295,59 @@ export const post_update_tip = (req, res, next) => {
     });
 }
 
-export const login = (req, res, next) => {
+export const get_login = (req, res, next) => {
     res.render(`login`);
-}   
+}
 
-export const signup = (req, res, next) => {
+export const post_login = (req, res, next) => {
+    var input_id = req.body.id;
+    var input_pw = req.body.password;
+    
+    // console.log(input_id + " " + input_pw);
+    var sql = `SELECT * FROM member WHERE id=? AND pw=?`;
+    connection.query(sql, [ input_id, input_pw ], (error, results, fields) => {
+        if(error) throw error;
+        var status = 1;
+
+        console.log(results);
+
+        if (results.length != 0) {
+            status = 1;
+        }
+        else {
+            console.log("no member");
+            status = 0;
+        }
+        
+        // console.log(status);
+        res.json(status);
+    });
+}
+
+export const get_signup = (req, res, next) => {
     res.render(`signup`);
+}
+
+export const post_signup = (req, res, next) => {
+    var new_id = req.body.id;
+
+    var sql = `SELECT * FROM member WHERE id=?`;
+    connection.query(sql, [new_id], (error, results, fields) => {
+        if (error) throw error;
+
+        var status = 1;
+
+        if (results.length != 0) {
+            // console.log(results);
+            status = 0;
+        }
+        else {
+            // console.log("nothing");
+            status = 1;
+        }
+        
+        // console.log(status);
+        res.json(status);
+    });
 }
 
