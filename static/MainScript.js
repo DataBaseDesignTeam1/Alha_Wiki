@@ -10,7 +10,7 @@ $(document).ready(function(){
         cache : false,
         processData: false,
         success: function (data) {
-            console.log(data);   
+            //console.log(data);   
         },error:function(data){
             alert("error");
         }
@@ -20,6 +20,7 @@ $(document).ready(function(){
     var incheon = ["중구", "동구" ,"미추홀구", "연수구", "남동구"]
     var busan = ["강서구", "금정구", "북구", "동래구", "해운대구"]
     var deajean =["유성구", "대덕구", "대둑구", "서구", "중구", "동구"];
+    var Big_Category=  ["매장관리", "서빙주방","서비스·미디어","생산·기능·운전·배달","사무회계","IT디자인", "고객상담·영업·리서치","강사교육"];
 
     var UserId = localStorage.getItem("UserId");
     changLoginBtn(UserId);
@@ -35,31 +36,42 @@ $(document).ready(function(){
     $('.BigCategoryItem').click(function(){
         var string = this.innerHTML.trim();
         //ajax로 통신해서, 값 가지고 오기
-        console.log(string);
-        localStorage.setItem("BigCategory", string);
-        localStorage.setItem("State", $("#state option:selected").text());
-        localStorage.setItem("City", $("#city option:selected").text());
+        for(var i = 0; i<Big_Category.length;i++)
+        {
+            if(string == Big_Category[i]){
+                localStorage.setItem("BigCategory", string);
+                console.log($("#state option:selected").val());
+                if($("#state option:selected").val() != "" && "City", $("#city option:selected").val() != "" ){
+                    localStorage.setItem("State", $("#state option:selected").text());
+                    localStorage.setItem("City", $("#city option:selected").text());
+                    location.href = "http://localhost:4000/category/" + i+"" ;
+                }else{
+                    alert("시/군 과 구/군을 선택해주세요");
+                }
+            }
+        }
+        
         // location.href = "SelectCategory.html";
     });
     $("#state").change(function() {
         var state = $(this).val();
         $("#city option").remove();
-        $("#city").append("<option value='1'>구/군 선택</option>");
+        $("#city").append("<option value=''>구/군 선택</option>");
         if(state == "Seoul"){
             for(var i = 0 ; i< seoul.length ; i++){
-                $("#city").append("<option>"+seoul[i] +"</option>");
+                $("#city").append("<option value ='1'>"+seoul[i] +"</option>");
             }
         }else if (state == "Incheon"){
             for(var i = 0 ; i< incheon.length ; i++){
-                $("#city").append("<option >"+incheon[i] +"</option>");
+                $("#city").append("<option value ='1' >"+incheon[i] +"</option>");
             }
         }else if (state == "Busan"){
             for(var i = 0 ; i< busan.length ; i++){
-                $("#city").append("<option>"+busan[i] +"</option>");
+                $("#city").append("<option value ='1'>"+busan[i] +"</option>");
             }
         }else if (state == "Deajean"){
             for(var i = 0 ; i< deajean.length ; i++){
-                $("#city").append("<option>"+deajean[i] +"</option>");
+                $("#city").append("<option value ='1'>"+deajean[i] +"</option>");
             }
         }
     });
