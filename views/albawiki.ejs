@@ -160,6 +160,17 @@
                             <button id = "PostButton">작성</button>
                         </div>
                     </div>
+
+                    <% reviews.data.forEach( review => { %>
+                        <div class = "PostItem">
+                            <% for(var i = 0; i < review.star_point; i++) { %>
+                                <span class="star star_left"></span>
+                                <span class="star star_right"></span>
+                            <% } %>
+                            <h1><%= review.writer + " " + review.write_date %></h1>
+                            <h4><%= review.content %></h4>
+                        </div>
+                    <% }); %>
                     
                 </div>
             </div>            

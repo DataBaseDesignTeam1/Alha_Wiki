@@ -164,15 +164,14 @@ export const alba_wiki = (req, res, next) => {
             var data = {
                 data: reviews
             }
-
-            console.log(data);
-        });
-
-        res.render('albawiki', {
-            business: business[0]
+            // console.log(data);
+            
+            res.render('albawiki', {
+                business: business[0],
+                reviews: data
+            });
         });
     });
-
 }
 
 export const login = (req, res, next) => {
