@@ -68,7 +68,8 @@ review_write.addEventListener('click', async _ => {
   var allData = {  
     content: review_content.val(), 
     star_point: review_star_point.val(),
-    userId: localStorage.getItem('UserId')
+    userId: localStorage.getItem('UserId'),
+    businessName: localStorage.getItem('Business')
    };
   var tmp = JSON.stringify(allData);
   $.ajax({
@@ -79,9 +80,9 @@ review_write.addEventListener('click', async _ => {
       cache : false,
       processData: false,
       success: function (data) {
-
       },error:function(data){
           alert("error");
       }
   }); 
+  location.href = location.href;
 });

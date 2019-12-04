@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="/static/jquery-3.4.1.min.js"></script>
-    <script src="/static/SelectBusinessScript.js"></script>
+    
     <title>Alba_Wiki</title>
     <style>
         html, body {
@@ -102,7 +102,10 @@
     
                     <div class="BusinessItem" OnClick="location.href = `http://localhost:4000/category/<%= indexes.data.big_category_index%>/<%= indexes.data.small_category_index%>/<%= businesses.data[i].business_index%>`">
                         <%= i+1 %>
-                        <%= businesses.data[i].business_name %>
+                        <div class = "BusinessName">
+                            <%= businesses.data[i].business_name %>
+                        </div>
+    
                         <%= businesses.data[i].business_state + businesses.data[i].business_city + businesses.data[i].business_detail_address %>
                     </div>
         
@@ -110,4 +113,5 @@
         </div>
     </div>
 </body>
+<script src="/static/SelectBusinessScript.js"></script>
 </html>

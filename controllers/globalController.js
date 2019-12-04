@@ -181,6 +181,33 @@ export const post_alba_wiki = (req, res, next) => {
 export const post_write_review = (req, res, next) => {
     console.log(req.body);
 
+    var sql = 'SELECT business_index FROM business WHERE ?';
+    connection.query(sql, { business_name : req.body.businessName },(error, results, fields) => {
+        if(error) throw error;
+
+        console.log(results);
+
+        var sql = `INSERT INTO review (content, star_point, write_date, business_index, id) VALUES (?, ?, ?, ?, ?)`;
+
+        
+        var date = new Date();
+        // console.log(`input_date : ${input_date}`);
+        var content = req.body.content;
+        var star_point = req.body.star_point;
+        var input_date = date.getFullYear() + "-" + ("0"+(date.getMonth()+1)).slice(-2) + "-" + ("0"+date.getDate()).slice(-2);
+        var business_index = results[0].business_index;
+        var userId = req.body.userId;
+
+        var params = [content, star_point, input_date, business_index, userId];
+        console.log(params);
+        connection.query(sql, params, (error, rows, fields) => {
+            if(error) throw error;
+
+            console.log(rows);
+        });        
+    });
+
+    
     
 }
 
