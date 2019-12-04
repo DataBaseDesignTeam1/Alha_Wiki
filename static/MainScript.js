@@ -85,4 +85,7 @@ $(document).ready(function(){
             location.href = "RecommandAlba.html";
         }
     });
+    $('#MainTitle').click(() => {
+        location.href = ""
+    });
 });

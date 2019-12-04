@@ -18,7 +18,8 @@ $(document).ready(function(){
               cache : false,
               processData: false,
               success: function (data) {
-                  if(data.stauts == 1){
+                  console.log(data);
+                  if(data == "1"){
                       alert("사용가능한 아이디 입니다.");
                       flag = "1";
                   }else{

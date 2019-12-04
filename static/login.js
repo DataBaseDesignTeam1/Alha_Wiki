@@ -2,7 +2,7 @@ $(document).ready(function(){
     $('#LoginBtn').click(function(){
         var id = $('#Id').val();
         var password = $('#Password').val();
-        var allData = {"id":id, "passord":password};
+        var allData = {"id":id, "password":password};
         var tmp = JSON.stringify(allData);
         console.log(tmp);
         $.ajax({
@@ -13,9 +13,9 @@ $(document).ready(function(){
             cache : false,
             processData: false,
             success: function (data) {
-                if(data.status == 1){
+                if(data == "1"){
                     console.log("로그인 완료");
-                    localStorage.setItem("UserId",Id);
+                    localStorage.setItem("UserId",id);
                     var URL = localStorage.getItem("beforeLoginPage");
                     //window.history.back();    
                     location.href = URL;
