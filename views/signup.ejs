@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="/static/jquery-3.4.1.min.js"></script>
-    
+
     <title>Alba_Wiki</title>
     <style>
-        html, body {
+            html, body {
             background: linear-gradient( to top, yellow,  #8b00ff );
             background-attachment: fixed;
         }
-        #main {
+        #Main {
             width: 100%;
             height: 100%;
             display: flex;
@@ -24,7 +25,7 @@
             padding-top: 10px;
             display: flex;
             flex-direction: column;
-            height: 45px;
+            height: 38px;
         }
 
         #SignUpSection {
@@ -32,34 +33,30 @@
             flex-direction : column;
             margin-left: 300px;
             margin-right: 300px; */
+
             display: flex;
             flex-direction: column;
             margin-left: 300px;
             margin-right: 300px;
 
-            margin-top : 100px;
+            margin-top: 100px;
         }
+
         div {
             text-align: center;
             flex-grow: 1;
-        
+
         }
-        #IdSection , #PasswordSection,  #SubmitSection,#LocalSection,#AgeSection, #NameSection{
-            /* background-color: powderblue;
-            flex-grow: 1;
-            margin-left: 300px;
-            margin-right: 300px;
-            margin-top :20px;
-            box-shadow: 0 0 0 0.1rem powderblue;
-            border-radius: 12px;
-            display: flex;
-            flex-direction : row;
-            height: 40px;
-            padding-top: 15px; */
+
+        #IdSection,
+        #PasswordSection,
+        #SubmitSection,
+        #AgeSection,
+        #NameSection {
             background-color: powderblue;
             flex-grow: 1;
-            margin-left: 200px;
-            margin-right: 200px;
+            margin-left: 50px;
+            margin-right: 50px;
             margin-top: 50px;
             box-shadow: 0 0 0 0.1rem powderblue;
             border-radius: 12px;
@@ -71,73 +68,128 @@
 
             background-color: transparent;
             border: 5px solid #EBF5FF;
-        }            
+        }
+        #LocalSection{
+            background-color: powderblue;
+            flex-grow: 1;
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-top: 50px;
+            box-shadow: 0 0 0 0.1rem powderblue;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: row;
+            height: 90px;
+            padding-top: 15px;
+
+
+            background-color: transparent;
+            border: 5px solid #EBF5FF;
+        }
+
+        #IdCheck {
+            box-shadow: 0 0 0 0.1rem EBF5FF;
+            border-radius: 12px;
+            background-color: #EBF5FF;
+            border: 5px solid #EBF5FF;
+            color: #FF9D6E;
+            padding: 0px 20px 0 20px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        button {
+            box-shadow: 0 0 0 0.1rem EBF5FF;
+            border-radius: 12px;
+            background-color: #EBF5FF;
+            border: 5px solid #EBF5FF;
+            color: #FF9D6E;
+            padding: 0px 20px 0 20px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        select {
+            padding: 20px;
+            margin: 7px;
+            flex-grow: 1;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        input {
+            padding:27px 0px 0 50px;
+        }
+
     </style>
 </head>
+
 <body>
-    <div id = "Main">
-        <div id = "MainHeader">
-            <h1>AlBA WIKI</h1>
+    <div id="Main">
+        <div>
+            <div style="float:left; color:#FFFFFF; padding:15px 2px 0px 30px; font-size:40px; font-weight:bold;">AlBA WIKI</div>
         </div>
-        <div id = "SignUpSection">
-                <div id = "IdSection">
-                    <div>
-                        아이디
-                    </div>
-                    <div>
-                        <input type="text" name="Id" id="Id">
-                    </div>
-                    <div>
-                        <input type="button" value="중복조회" id= "IdCheck">
-                    </div>
+        <div id="MainHeader">
+            <h1 style=" color:#FFFFFF; padding:50px 0px 0px 0px; font-size:40px; font-weight:bold;">SIGN UP</h1>
+        </div>
+        <div id="SignUpSection">
+            <div id="IdSection">
+                <div style="color:#FFFFFF; padding:7px 0px 0 50px; font-size:30px; font-weight:bold;">
+                    아이디
                 </div>
-                <div id = "PasswordSection">
-                    <div>
-                        비밀번호
-                    </div>
-                    <div>
-                        <input type="password" name="Password" id="Password">
-                    </div>
+                <div>
+                    <input type="text" name="Id" id="Id">
                 </div>
-                <div id = "AgeSection">
-                    <div>
-                        나이
-                    </div>
-                     <div>
-                        <input type="text" name="Age" id="Age">
-                    </div>
+                <div>
+                    <input type="button" value="중복조회" id="IdCheck">
                 </div>
-                <div id = "NameSection">
-                        <div>
-                            이름
-                        </div>
-                         <div>
-                            <input type="text" name="Name" id="Name">
-                        </div>
-                    </div>
-                <div id = "LocalSection">
-                    <div id = "Local">
-                        <select name="State" id="state">
-                            <option value="">시/군 선택</option>
-                            <option value="Seoul">서울특별시</option>
-                            <option value="Busan">부산</option>
-                            <option value="Incheon">인천</option>
+            </div>
+            <div id="PasswordSection">
+                <div style="color:#FFFFFF; padding:7px 0px 0 50px; font-size:30px; font-weight:bold;">
+                    비밀번호
+                </div>
+                <div>
+                    <input type="password" name="Password" id="Password">
+                </div>
+            </div>
+            <div id="AgeSection">
+                <div style="color:#FFFFFF; padding:7px 0px 0 50px; font-size:30px; font-weight:bold;">
+                    나이
+                </div>
+                <div>
+                    <input type="text" name="Age" id="Age">
+                </div>
+            </div>
+            <div id="NameSection">
+                <div style="color:#FFFFFF; padding:7px 0px 0 50px; font-size:30px; font-weight:bold;">
+                    이름
+                </div>
+                <div>
+                    <input type="text" name="Name" id="Name">
+                </div>
+            </div>
+            <div id="LocalSection">
+                <div id="Local">
+                    <select name="State" id="state">
+                        <option value="">시/군 선택</option>
+                        <option value="Seoul">서울특별시</option>
+                        <option value="Busan">부산</option>
+                        <option value="Incheon">인천</option>
                         <option value="Deajean">대전</option>
-                        </select>
-                        <select name="City" id="city">
-                                <option value="">구/군 선택</option>
-                        </select>
-                    </div>
-                </div>            
-                <div id = "SubmitSection">
-                    <div id = "SinUp">
-                        <button type="submit" id = "SignUpBtn">회원가입</button>
-                    </div>
-                </div>  
-            
-            </div>            
+                    </select>
+                    <select name="City" id="city">
+                        <option value="">구/군 선택</option>
+                    </select>
+                </div>
+            </div>
+            <div id="SubmitSection">
+                <div id="SinUp">
+                    <button type="submit" id="SignUpBtn">회원가입</button>
+                </div>
+            </div>
+
         </div>
+    </div>
     </div>
 </body>
 <script src="/static/SignUp.js"></script>
+
 </html>
