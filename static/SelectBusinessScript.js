@@ -48,10 +48,13 @@ $(document).ready(function(){
     $('#LogOut').click(function(){
         localStorage.removeItem("UserId");
         changLoginBtn("");
-     })
-     $(document).on("click","#Login",function(){
+    })
+    $(document).on("click","#Login",function(){
         var URL = document.location.href;
         localStorage.setItem('beforeLoginPage',URL);
         location.href = "http://localhost:4000/login";
-     });
+    });
+    $('#MainTitle').click(() => {
+        location.href = "http://localhost:4000/";
+    });
 });

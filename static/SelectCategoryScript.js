@@ -37,5 +37,7 @@ $(document).ready(function(){
         localStorage.setItem('beforeLoginPage',URL);
         location.href = "http://localhost:4000/login";
      });
-
+     $('#MainTitle').click(() => {
+        location.href = "http://localhost:4000/";
+    });
 });

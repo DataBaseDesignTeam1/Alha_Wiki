@@ -93,7 +93,9 @@ $(document).ready(function () {
       });
     }
   });
-
+  $('#MainTitle').click(() => {
+    location.href = "http://localhost:4000/";
+});
 });
 
 const review_content = $('#review_content');

@@ -86,6 +86,6 @@ $(document).ready(function(){
         }
     });
     $('#MainTitle').click(() => {
-        location.href = ""
+        location.href = "http://localhost:4000/";
     });
 });
