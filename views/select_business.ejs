@@ -9,7 +9,7 @@
     <title>Alba_Wiki</title>
     <style>
         html, body {
-            background: linear-gradient( to top,#FAF58C, #8b00ff );
+            background: linear-gradient( to top, yellow,  #8b00ff );
             background-attachment: fixed;
         }
         #main {
@@ -18,22 +18,28 @@
             display: flex;
             flex-direction : column;
         }
-        #BusinessTable {
-            display: flex;
-            flex-direction : row;
-            height: 80%;
-        }
+       
         #MainHeader {
-            background-color: powderblue;
-            box-shadow: 0 0 0 0.1rem powderblue;
-            border-radius: 12px;
-            margin: 10px;
+            background-color: #FF9D6E;
+            margin: 0px;
             padding-top: 10px;
             display: flex;
-            flex-direction : column;
+            flex-direction: column;
+            height: 45px;
+        }
+        #CategoryName{
+            height: 38px;
+        }
+
+
+        #BusinessTable {
+            display: flex;
+            flex-direction: row;
+            height: 80%;
+           
         }
         div {
-            border: 1px;
+            
             text-align: center;
             flex-grow: 1;
         
@@ -42,18 +48,25 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            
+            height: 80px;
         }
         .BusinessItem {
-            background-color: powderblue;
-            
-            padding-top: 13%;
+            line-height: 80px;
+
             margin: 10px;
             box-shadow: 0 0 0 0.1rem powderblue;
             border-radius: 12px;
             display: flex;
             flex-direction: columns;
-            white-space:normal;
+            white-space: normal;
+
+            flex-grow: 1;
+            font-size: 1.5rem;
+            background-color: transparent;
+            border: 5px solid #EBF5FF;
+            float: none; 
+            color : #FFFFFF; 
+            font-weight:bold;
         }
         select {
             padding : 3px;
@@ -61,35 +74,39 @@
             flex-grow: 1;
         }
         #Login {
-            float: Right;
-            margin-right: 15px;
-            padding-right : 10px;
-        }
-        #UserId {
-            float: Right;
-            margin-right: 15px;
-            padding-right : 10px;
-            text-align: right;
-        }
-        #LogOut {
-            margin-left: 15px;
-        }
+
+margin-bottom: 15px;
+margin-right: 20px;
+padding-right: 12px;
+font-size: 22px;
+background-color: transparent;
+color: #FFFFFF;
+border: 2px solid #FFFFFF;
+}
+#UserId {
+float: Right;
+margin-right: 15px;
+padding-bottom: 70px;
+padding-right: 70px;
+text-align: right;
+}
+#LogOut {
+margin-left: 15px;
+}
         
     </style>
 </head>
 <body>
     <div id = "main">
         <div>
-            <h1>AlBA WIKI</h1>
-        </div>
-        <div>
-            <div style="float:left; color:#FFFFFF; padding:20px 2px 0 30px; font-size:40px; font-weight:bold;">상세 위치 검색하기</div>
+            <h1 style="float:left; color:#FFFFFF; padding:15px 2px 0 30px; font-size:40px; font-weight:bold;">AlBA WIKI</h1>
         </div>
         <div id= "MainHeader">
-            <h1 id = "CategoryName">
-                
-            </h1>
         </div>
+        <div>
+            <div style="float:left; color:#FFFFFF; padding:20px 2px 0 30px; font-size:40px; font-weight:bold;">지점 선택하기</div>
+        </div>
+        <h1 id = "CategoryName" style=" color:#FFFFFF; padding:20px 2px 0 30px; font-size:40px; font-weight:bold;"></h1>
         <div id = "BusinessTable">
             <% for(var i = 0; i < businesses.data.length; i++) { %>
             

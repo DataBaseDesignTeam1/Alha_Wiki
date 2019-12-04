@@ -23,15 +23,17 @@ $(document).ready(function(){
         //ajax로 통신해서, 값 가지고 오기
     });
     $('#Login').click(function(){
-        localStorage.setItem('beforeLoginPage',"SelectBusiness.html");
-        location.href = "login.html";
+        var URL = document.location.href;
+        localStorage.setItem('beforeLoginPage',URL);
+        location.href = "http://localhost:4000/login";
     });
     $('#LogOut').click(function(){
         localStorage.removeItem("UserId");
         changLoginBtn("");
      })
      $(document).on("click","#Login",function(){
-        localStorage.setItem('beforeLoginPage',"SelectBusiness.html");
-         location.href = "login.html";
+        var URL = document.location.href;
+        localStorage.setItem('beforeLoginPage',URL);
+        location.href = "http://localhost:4000/login";
      });
 });

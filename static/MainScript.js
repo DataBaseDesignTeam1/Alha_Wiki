@@ -63,16 +63,17 @@ $(document).ready(function(){
         }
     });
     $('#Login').click(function(){
-        localStorage.setItem('beforeLoginPage',"Main.html");
-        location.href = "login.html";
+        var URL = document.location.href;
+        localStorage.setItem('beforeLoginPage',URL);
+        location.href = "http://localhost:4000/login";
     });
     $('#LogOut').click(function(){
        localStorage.removeItem("UserId");
        changLoginBtn("");
     })
     $(document).on("click","#Login",function(){
-        localStorage.setItem('beforeLoginPage',"Main.html");
-        localStorage.setItem('URL',)
+        var URL = document.location.href;
+        localStorage.setItem('beforeLoginPage',URL);
         location.href = "http://localhost:4000/login";
     });
     $('#RecommandSection').click(function(){
