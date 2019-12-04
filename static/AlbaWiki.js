@@ -66,7 +66,9 @@ $(document).ready(function () {
     } else {
       var Tip = $('#Wiki').val();
       var is_recruiting;
-      if($('#Recruit').val() == "true"){
+      var checkBox = document.getElementById("Recruit");
+      console.log(checkBox.checked);
+      if(checkBox.checked==true){
         is_recruiting = 1;
       }else{
         is_recruiting = 0;
@@ -77,7 +79,6 @@ $(document).ready(function () {
                       userId: localStorage.getItem('UserId'),
                       businessName: localStorage.getItem('Business') };
       var tmp = JSON.stringify(allData);
-      console.log(tmp);
       $.ajax({
           type:"POST",
           url: "http://localhost:4000/update_tip",
@@ -86,7 +87,7 @@ $(document).ready(function () {
           cache : false,
           processData: false,
           success: function (data) {
-              console.log(data);   
+            location.href =location.href;  
           },error:function(data){
               alert("error");
           }
