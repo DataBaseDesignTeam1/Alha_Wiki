@@ -1,5 +1,4 @@
 import { connection } from "../db";
-import routes from "../routes";
 
 export const main = (req, res, next) => {
     // console.log(req.params);    
@@ -96,9 +95,6 @@ export const select_business = (req, res, next) => {
     var bigCategory_id = req.params.bigc_id;
     var smallCategory_id = req.params.smallc_id;
 
-    var bigCategory_name = "";
-    var smallCategory_name = "";
-
     var category_nums = {
         big_category_index: bigCategory_id,
         small_category_index: smallCategory_id
@@ -129,7 +125,7 @@ export const select_business = (req, res, next) => {
         }
         // console.log(data);
         // console.log(indexes.data);
-        // res.send("select_business");
+        
         res.render('select_business', {
             indexes: indexes,
             businesses: data
@@ -227,10 +223,6 @@ export const post_enroll_member = (req, res, next) => {
 
 export const login = (req, res, next) => {
     res.render(`login`);
-}
-
-export const logout = (req, res, next) => {
-    res.send(`LOGOUT`);
 }
 
 export const signup = (req, res, next) => {
