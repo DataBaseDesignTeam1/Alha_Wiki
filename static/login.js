@@ -8,5 +8,6 @@ $(document).ready(function(){
     });
     $('#SignUpBtn').click(function(){
         //location.href = "SignUp.html";
+        location.href = "http://localhost:4000/signup";
     });
 });
