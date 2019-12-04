@@ -9,6 +9,7 @@ $(document).ready(function(){
         }else{
             $('#Login').remove();
             $('#MainHeader').prepend('<div id = "UserId"> User Id :'+ UserId+ '<button id = "LogOut">로그아웃</button></div>');
+            $('#IsRecruit').prepend('<button id = "ModifiyTip">수정</button></div>');
         }
     }
     //통신해서 값 가지고 오고 후기 있는것만큼 후기 html만들어주기
@@ -30,14 +31,14 @@ $(document).ready(function(){
             addPostedStar(data[i].star);
         }
       }
-      function addPostedStar(star){
-        $('.Post').append(' <div class = "PostItem">  <div class="star-box"> <span class="stared star_left"></span> <span class="stared star_right"></span> <span class="stared star_left"></span> <span class="stared star_right"></span> <span class="stared star_left"></span> <span class="stared star_right"></span> <span class="stared star_left"></span> <span class="stared star_right"></span> <span class="stared star_left"></span> <span class="stared star_right"></span> 후기 2</div></div>');
-        var temp = $('.star-box').last()[0];
-        for(var i=0; i<=star; i++){
-          $(temp.getElementsByClassName("stared")).eq(i).addClass("on");
-        }
+    function addPostedStar(star){
+      $('.Post').append(' <div class = "PostItem">  <div class="star-box"> <span class="stared star_left"></span> <span class="stared star_right"></span> <span class="stared star_left"></span> <span class="stared star_right"></span> <span class="stared star_left"></span> <span class="stared star_right"></span> <span class="stared star_left"></span> <span class="stared star_right"></span> <span class="stared star_left"></span> <span class="stared star_right"></span> 후기 2</div></div>');
+      var temp = $('.star-box').last()[0];
+      for(var i=0; i<=star; i++){
+        $(temp.getElementsByClassName("stared")).eq(i).addClass("on");
       }
-      $('#Login').click(function(){
+    }
+    $('#Login').click(function(){
         localStorage.setItem('beforeLoginPage',"AlbaWiki.html");
         location.href = "login.html";
     });
