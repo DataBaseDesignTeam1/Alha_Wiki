@@ -8,7 +8,7 @@
     <script src="/static/AlbaWiki.js"></script>
     <title>Alba_Wiki</title>
     <style>
-       html, body {
+         html, body {
             background: linear-gradient( to top, yellow,  #8b00ff );
             background-attachment: fixed;
         }
@@ -19,49 +19,70 @@
             flex-direction : column;
         }
         #MainHeader {
-            background-color: powderblue;
-            box-shadow: 0 0 0 0.1rem powderblue;
-            border-radius: 12px;
-            margin: 10px;
-            padding-top: 20px;
-            text-align:center;
+            background-color: #FF9D6E;
+            margin: 0px;
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+            height: 45px;
         }
         #Category {
-            background-color: powderblue;
+       
             box-shadow: 0 0 0 0.1rem powderblue;
             border-radius: 12px;
             margin: 10px;
             padding-top: 12px;
-            text-align:center;
+            text-align: center;
+
+
+            background-color: #FFFFFF;
+            flex-grow: 1;
+      
+            font-size: 1.5rem;
+            background-color: transparent;
+            border: 5px solid #EBF5FF;
         }
         #WIKI {
             display: flex;
-            flex-direction : column;
+            flex-direction: column;
             height: 80%;
             flex-grow: 1;
-            
+
         }
         .Post {
             display: flex;
             flex-direction: column;
-            
+            background-color: #FFFFFF;
+            flex-grow: 1;
+            font-size: 1.5rem;
+            background-color: transparent;
         }
         .PostItem {
-            background-color: powderblue;
+           
             margin: 10px;
             box-shadow: 0 0 0 0.1rem powderblue;
             border-radius: 12px;
+
+            flex-grow: 1;
+            font-size: 1.5rem;
+            background-color: transparent;
+            border: 5px solid #EBF5FF;
         }
         .Text {
-            background-color: powderblue;
+            background-color: #FFFFFF;
+
             margin: 10px;
             box-shadow: 0 0 0 0.1rem powderblue;
             border-radius: 12px;
-            text-align:center;
+            background-color: transparent;
+            border: 3px solid #EBF5FF;
+            text-align: center;
         }
+
         #JobTaskAndTip {
             display: flex;
             flex-direction: row;
+
         }
         *{margin:0; padding:0;}
         .star , .stared{
@@ -90,16 +111,30 @@
             margin-left: 10px;
         }
         #PostButton {
-            margin-left: 10px;      
+            margin-left: 10px;
+           text-align : center;
+            background-color: transparent;
+            color: #FFFFFF;
+            border: 2px solid #FFFFFF;
+            padding:15px 15px 15px 15px; 
+            font-size:27px; 
+            font-weight:bold;
         }
         #postText {
+            line-height: 15px;
+            margin-left: 10px;
             display: flex;
             flex-direction: row;
         }
         #Login {
-            float: Right;
-            margin-right: 15px;
-            padding-right : 10px;
+            margin-bottom: 15px;
+            margin-right: 20px;
+            padding-right: 12px;
+            font-size: 22px;
+
+            background-color: transparent;
+            color: #FFFFFF;
+            border: 2px solid #FFFFFF;
         }
         #UserId {
             float: Right;
@@ -113,9 +148,10 @@
         #RecruitURL { 
             display: flex;
             flex-direction: row;
-            background-color: powderblue;
+            border: 5px solid #EBF5FF;
+            background-color: #EBF5FF;
             margin: 10px;
-            box-shadow: 0 0 0 0.1rem powderblue;
+            box-shadow: 0 0 0 0.1rem #EBF5FF;
             border-radius: 12px;
             text-align:center;
             height: 30px;
@@ -146,10 +182,10 @@
 </head>
 <body>
     <div id = "main">
+        <div>
+            <div style="float:left; color:#FFFFFF; padding:15px 2px 0 30px; font-size:40px; font-weight:bold;">AlBA WIKI</div>
+        </div>
         <div id = "MainHeader">
-            <div>
-                <h1>AlBA WIKI</h1>
-            </div>
         </div>
         <div id = "Category">
             <h1 id = "CategoryName">
@@ -205,12 +241,13 @@
                             <button id = "PostButton">작성</button>
                         </div>
                     </div>
+                </div>
 
                     <% reviews.data.forEach( review => { %>
                         <div class = "PostItem">
                             <% for(var i = 0; i < review.star_point; i++) { %>
-                                <span class="star star_left"></span>
-                                <span class="star star_right"></span>
+                                <span class="stared star_left"></span>
+                                <span class="stared star_right"></span>
                             <% } %>
                             <h1><%= review.writer + " " + review.write_date %></h1>
                             <h4><%= review.content %></h4>
