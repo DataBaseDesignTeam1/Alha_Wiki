@@ -60,6 +60,39 @@ $(document).ready(function () {
     localStorage.setItem('beforeLoginPage',URL);
     location.href = "http://localhost:4000/login";
   });
+  $('#UpdateTip').click(function(){
+    if (UserId == "" || UserId == null) {
+      alert("로그인 해주세요!!");
+    } else {
+      var Tip = $('#Wiki').val();
+      var is_recruiting;
+      if($('#Recruit').val() == "true"){
+        is_recruiting = 1;
+      }else{
+        is_recruiting = 0;
+      }
+      var allData = { tip : Tip,
+                      recruit_url: $('#URL').val(), 
+                      is_recruiting : is_recruiting,
+                      userId: localStorage.getItem('UserId'),
+                      businessName: localStorage.getItem('Business') };
+      var tmp = JSON.stringify(allData);
+      console.log(tmp);
+      $.ajax({
+          type:"POST",
+          url: "http://localhost:4000/update_tip",
+          data: tmp,
+          contentType  : "application/json",
+          cache : false,
+          processData: false,
+          success: function (data) {
+              console.log(data);   
+          },error:function(data){
+              alert("error");
+          }
+      });
+    }
+  });
 
 });
 

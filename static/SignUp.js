@@ -3,32 +3,60 @@ $(document).ready(function(){
     var incheon = ["중구", "동구" ,"미추홀구", "연수구", "남동구"]
     var busan = ["강서구", "금정구", "북구", "동래구", "해운대구"]
     var deajean =["유성구", "대덕구", "대둑구", "서구", "중구", "동구"];
-
-  
-    $('#SignUpBtn').click(function(){
+    var flag = "0";
+    $('#IdCheck').click(function(){
         var allData = {  
             id: $('#Id').val(), 
-            pw: $('#Password').val(), 
-            age: $('#Age').val(), 
-            name : $('#Name').val(),
-            state: $('#state').val(),   
-            city : $('#city').val()
            };
         //    console.log(allData)
           var tmp = JSON.stringify(allData);
           $.ajax({
               type:"POST",
-              url: "http://localhost:4000/enroll_member",
+              url: "http://localhost:4000/signup",
               data: tmp,
               contentType  : "application/json",
               cache : false,
               processData: false,
               success: function (data) {
+                  if(data.stauts == 1){
+                      alert("사용가능한 아이디 입니다.");
+                      flag = "1";
+                  }else{
+                      alert("사용 불가능한 아이디입니다.");
+                  }
               },error:function(data){
                   alert("error");
               }
           }); 
-        location.href = "http://localhost:4000/login";
+    });
+    $('#SignUpBtn').click(function(){
+        if(flag == "1"){
+            var allData = {  
+                id: $('#Id').val(), 
+                pw: $('#Password').val(), 
+                age: $('#Age').val(), 
+                name : $('#Name').val(),
+                state: $('#state').val(),   
+                city : $('#city').val()
+               };
+            //    console.log(allData)
+              var tmp = JSON.stringify(allData);
+              $.ajax({
+                  type:"POST",
+                  url: "http://localhost:4000/enroll_member",
+                  data: tmp,
+                  contentType  : "application/json",
+                  cache : false,
+                  processData: false,
+                  success: function (data) {
+                  },error:function(data){
+                      alert("error");
+                  }
+              }); 
+            location.href = "http://localhost:4000/login";
+        }else {
+            alert("회원 가입 불가능 합니다. 로그인 조회를 눌러 주세요");
+        }
     });
     $("#state").change(function() {
         var state = $(this).val();

@@ -7,7 +7,6 @@ userRouter.get("/edit", (req, res) => res.send(`user edit`));
 userRouter.get("/password", (req, res) => res.send(`user password`));
 
 
-
 // Global
 const MAIN = "/";
 const LOGIN = "/login";
@@ -18,6 +17,7 @@ const RECOMMAND = "/recommand/:user_index";
 
 const ENROLL_MEMBER = "/enroll_member";
 const WRITE_REVIEW = "/write_review";
+const UPDATE_TIP = "/update_tip";
 
 const BIG_CATEGORY = "/category/:bigc_id";
 const SELECTBUSINESS = "/category/:bigc_id/:smallc_id";
@@ -32,6 +32,7 @@ const routes = {
 
     write_review: WRITE_REVIEW,
     enroll_member: ENROLL_MEMBER,
+    update_tip: UPDATE_TIP,
 
     in_big_category: BIG_CATEGORY,
     select_business: SELECTBUSINESS,

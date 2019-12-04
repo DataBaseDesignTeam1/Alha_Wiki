@@ -1,10 +1,31 @@
 $(document).ready(function(){
     $('#LoginBtn').click(function(){
-        var Id = $('#Id').val();
-        localStorage.setItem("UserId",Id);
-        var URL = localStorage.getItem("beforeLoginPage");
-        //window.history.back();    
-        location.href = URL;
+        var id = $('#Id').val();
+        var password = $('#Password').val();
+        var allData = {"id":id, "passord":password};
+        var tmp = JSON.stringify(allData);
+        console.log(tmp);
+        $.ajax({
+            type:"POST",
+            url: 'http://localhost:4000/login',
+            data: tmp,
+            contentType  : "application/json",
+            cache : false,
+            processData: false,
+            success: function (data) {
+                if(data.status == 1){
+                    console.log("로그인 완료");
+                    localStorage.setItem("UserId",Id);
+                    var URL = localStorage.getItem("beforeLoginPage");
+                    //window.history.back();    
+                    location.href = URL;
+                }else{
+                    console.log("로그인 실패");
+                }  
+            },error:function(data){
+                alert("error");
+            }
+        });
     });
     $('#SignUpBtn').click(function(){
         //location.href = "SignUp.html";

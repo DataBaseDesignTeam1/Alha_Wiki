@@ -1,5 +1,23 @@
 $(document).ready(function(){
-
+    var city = localStorage.getItem("City");
+    var state = localStorage.getItem("State");
+    var allData = {"state":state, "city":city};
+    var tmp = JSON.stringify(allData);
+    var url = location.href;
+    console.log(tmp);
+    $.ajax({
+        type:"POST",
+        url: url,
+        data: tmp,
+        contentType  : "application/json",
+        cache : false,
+        processData: false,
+        success: function (data) {
+            console.log("매장 정보:",data);   
+        },error:function(data){
+            alert("error");
+        }
+    });
 
     var UserId = localStorage.getItem("UserId");
     changLoginBtn(UserId);

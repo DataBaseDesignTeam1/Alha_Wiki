@@ -205,17 +205,13 @@
                             URL
                         </div>
                         <div id = "URLText">
-                            <% if (business.is_recruiting) { %>
-                                <a href="<%= business.recruit_url%>">지원 상세보기</a>
-                            <% } else { %>
-                                <input type="text" name="URL" id="URL" >
-                            <% } %>    
+                            <input type="text" name="URL" id="URL" value="<%= business.recruit_url %>" >
                         </div>
                         <div id = "IsRecruit">
                             <div>
-                                <input type="button" value="작성">
+                                <input type="button" value="작성" id = "UpdateTip">
                             </div>
-                            <input type="checkbox" name="" id="Recruit">
+                            <input type="checkbox" name="" id="Recruit" value = "true">
                             <div id= "RecruitHead">
                                     구직중
                             </div>

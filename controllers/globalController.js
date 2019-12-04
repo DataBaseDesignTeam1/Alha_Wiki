@@ -91,7 +91,7 @@ export const in_big_category = (req, res, next) => {
     });
 }
 
-export const select_business = (req, res, next) => {
+export const get_select_business = (req, res, next) => {
     var bigCategory_id = req.params.bigc_id;
     var smallCategory_id = req.params.smallc_id;
 
@@ -103,7 +103,8 @@ export const select_business = (req, res, next) => {
     var sql = `SELECT business_index, business_name, business_state, business_city, business_detail_address FROM business WHERE ? ORDER BY business_index`;
     connection.query(sql, { small_category_index: smallCategory_id }, (error, results, fields) => {
         if (error) throw error;
-        // console.log(results);
+
+        console.log(results);
         var businesses = new Array();
         results.forEach(element => {
             var business = {
@@ -130,6 +131,48 @@ export const select_business = (req, res, next) => {
             indexes: indexes,
             businesses: data
         });
+    });
+}
+
+export const post_select_business = (req, res, next) => {
+    // console.log(req.params);
+    // console.log(req.body);
+
+    var bigCategory_id = req.params.bigc_id;
+    var smallCategory_id = req.params.smallc_id;
+    var state = req.body.state;
+    var city = req.body.city;
+
+    var category_nums = {
+        big_category_index: bigCategory_id,
+        small_category_index: smallCategory_id
+    }
+
+    var sql = `SELECT business_index, business_name, business_state, business_city, business_detail_address FROM business WHERE small_category_index=? AND business_state=? AND business_city=? ORDER BY business_index`;
+    connection.query(sql, [ smallCategory_id, state, city ], (error, results, fields) => {
+        if (error) throw error;
+        console.log(results);
+        var businesses = new Array();
+        results.forEach(element => {
+            var business = {
+                business_index: element.business_index,
+                business_name: element.business_name,
+                business_state: element.business_state,
+                business_city: element.business_city,
+                business_detail_address: element.business_detail_address
+            }
+            businesses.push(business);
+        });
+
+        var data = {
+            data: businesses,
+            indexes: category_nums
+        }
+        // console.log(data);
+        // console.log(indexes.data);
+        
+
+        res.json(data);
     });
 }
 
@@ -171,13 +214,13 @@ export const get_alba_wiki = (req, res, next) => {
 }
 
 export const post_write_review = (req, res, next) => {
-    console.log(req.body);
+    // console.log(req.body);
 
     var sql = 'SELECT business_index FROM business WHERE ?';
     connection.query(sql, { business_name : req.body.businessName },(error, results, fields) => {
         if(error) throw error;
 
-        console.log(results);
+        // console.log(results);
 
         var sql = `INSERT INTO review (content, star_point, write_date, business_index, id) VALUES (?, ?, ?, ?, ?)`;
 
@@ -190,7 +233,7 @@ export const post_write_review = (req, res, next) => {
         var userId = req.body.userId;
 
         var params = [content, star_point, input_date, business_index, userId];
-        console.log(params);
+        // console.log(params);
         connection.query(sql, params, (error, rows, fields) => {
             if(error) throw error;
 
@@ -201,7 +244,7 @@ export const post_write_review = (req, res, next) => {
 
 export const post_enroll_member = (req, res, next) => {
 
-    console.log(req.body);
+    // console.log(req.body);
 
     var sql = `INSERT INTO member (id, pw, name, age, state, city) VALUES (?, ?, ?, ?, ?, ?)`;
 
@@ -221,9 +264,40 @@ export const post_enroll_member = (req, res, next) => {
     });
 }
 
+export const post_update_tip = (req, res, next) => {
+    console.log(req.body);
+
+    var sql = `UPDATE business SET tip=?, recruit_url=?, is_recruiting=?, update_date=?, update_id=? WHERE business_name=?`;
+
+    var date = new Date();
+
+    var tip = req.body.tip;
+    var recruit_url = req.body.recruit_url;
+    var is_recruiting = req.body.is_recruiting;
+    var update_date = date.getFullYear() + "-" + ("0"+(date.getMonth()+1)).slice(-2) + "-" + ("0"+date.getDate()).slice(-2);
+    var update_id = req.body.userId;
+    
+    var businessName = req.body.businessName;
+
+    var params = [tip, recruit_url, is_recruiting, update_date, update_id, businessName];
+
+    connection.query(sql, params, (error, results, fields) => {
+        if(error) throw error;
+
+        // console.log(results);
+        console.log("update business tip");
+
+        var params_json = {
+            data: params
+        }
+
+        res.json(params_json);
+    });
+}
+
 export const login = (req, res, next) => {
     res.render(`login`);
-}
+}   
 
 export const signup = (req, res, next) => {
     res.render(`signup`);
