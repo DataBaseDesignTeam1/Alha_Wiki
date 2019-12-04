@@ -8,7 +8,7 @@ const LOGIN = "/login";
 const LOGOUT = "/logout";
 const SIGNUP = "/signup";
 
-const RECOMMAND = "/recommand/:user_index";
+const RECOMMAND = "/recommand";
 
 const ENROLL_MEMBER = "/enroll_member";
 const WRITE_REVIEW = "/write_review";

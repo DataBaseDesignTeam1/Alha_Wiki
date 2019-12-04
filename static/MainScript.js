@@ -94,7 +94,7 @@ $(document).ready(function(){
         if(UserId == "" || UserId == null){
            alert("Login 후 이용해주세요!");
         }else{
-            location.href = "RecommandAlba.html";
+            location.href = "http://localhost:4000/recommand";
         }
     });
     $('#MainTitle').click(() => {

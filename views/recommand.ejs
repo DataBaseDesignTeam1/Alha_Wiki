@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="/static/jquery-3.4.1.min.js"></script>
+    <title>Alba_Wiki</title>
+    <style>
+        html, body {
+            background: linear-gradient( to top, yellow,  #8b00ff );
+            background-attachment: fixed;
+        }
+        #main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction : column;
+        }
+        #MainHeader {
+            background-color: #FF9D6E;
+            margin: 0px;
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+            height: 38px;
+        }
+        #Category {
+       
+            box-shadow: 0 0 0 0.1rem powderblue;
+            border-radius: 12px;
+            margin: 10px;
+            padding-top: 12px;
+            text-align: center;
+
+
+            background-color: #FFFFFF;
+            flex-grow: 1;
+      
+            font-size: 1.5rem;
+            background-color: transparent;
+            border: 5px solid #EBF5FF;
+        }
+        #WIKI {
+            display: flex;
+            flex-direction: column;
+            height: 80%;
+            flex-grow: 1;
+
+        }
+        .Post {
+            display: flex;
+            flex-direction: column;
+            background-color: #FFFFFF;
+            flex-grow: 1;
+            font-size: 1.5rem;
+            background-color: transparent;
+            border: 5px solid #EBF5FF;
+        }
+        .PostItem {
+           
+            margin: 10px;
+            box-shadow: 0 0 0 0.1rem powderblue;
+            border-radius: 12px;
+
+            flex-grow: 1;
+            font-size: 1.5rem;
+            background-color: transparent;
+            border: 5px solid #EBF5FF;
+        }
+        .Text {
+            background-color: #FFFFFF;
+
+            margin: 10px;
+            box-shadow: 0 0 0 0.1rem powderblue;
+            border-radius: 12px;
+            background-color: transparent;
+            border: 3px solid #EBF5FF;
+            text-align: center;
+        }
+
+        #JobTaskAndTip {
+            display: flex;
+            flex-direction: row;
+
+        }
+        *{margin:0; padding:0;}
+        .star , .stared{
+            display:inline-block;
+            width: 30px;height: 60px;
+            cursor: pointer;
+        }
+        .star_left{
+            background: url(http://gahyun.wooga.kr/main/img/testImg/star.png) no-repeat 0 0; 
+            background-size: 60px; 
+
+        }
+        .star_right{
+            background: url(http://gahyun.wooga.kr/main/img/testImg/star.png) no-repeat -30px 0; 
+            background-size: 60px; 
+
+        }
+        .star.on, .stared.on{
+            background-image: url(http://gahyun.wooga.kr/main/img/testImg/star_on.png);
+        }
+        textarea {
+            border: 2px solid yellow;
+            resize: none;
+        }
+        #post {
+            margin-left: 10px;
+        }
+        #PostButton {
+            margin-left: 10px;
+           text-align : center;
+            background-color: transparent;
+            color: #FFFFFF;
+            border: 2px solid #FFFFFF;
+        }
+        #postText {
+            line-height: 15px;
+            margin-left: 10px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #BusinessTable {
+            display: flex;
+            flex-direction: row;
+            height: 80%;
+        }
+
+        div {
+            border: 1px;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .BusinessList {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .BusinessItem {
+            line-height: 80px;
+            margin: 10px;
+            box-shadow: 0 0 0 0.1rem powderblue;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: columns;
+            white-space: normal;
+            flex-grow: 1;
+            font-size: 1.5rem;
+            background-color: transparent;
+            border: 5px solid #EBF5FF;
+        }
+
+        select {
+            padding: 3px;
+            margin: 2px;
+            flex-grow: 1;
+        }
+
+        #Login {
+            margin-bottom: 15px;
+            margin-right: 20px;
+            padding-right: 12px;
+            font-size: 22px;
+
+            background-color: transparent;
+            color: #FFFFFF;
+            border: 2px solid #FFFFFF;
+        }
+        #UserId {
+            float: Right;
+            margin-right: 15px;
+            padding-right : 10px;
+            text-align: right;
+        }
+        #LogOut {
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div>
+            <div id="MainTitle" style="float:left; color:#FFFFFF; padding:15px 2px 0 30px; font-size:40px; font-weight:bold;">AlBA WIKI</div>
+        </div>
+        <div id="MainHeader"></div>
+        <div>
+            <h1 id="CategoryName" style=" color:#FFFFFF; padding:20px 2px 0 30px; font-size:40px; font-weight:bold;">나의 알바 후기 작성 목록</h1>
+        </div>
+
+        <div class="Post">
+            
+                <div class="star-box" >
+                    <span class="star star_left" style="float : left;"></span>
+                    <span class="star star_right"style="float : left;"></span>
+
+                    <span class="star star_left"style="float : left;"></span>
+                    <span class="star star_right"style="float : left;"></span>
+
+                    <span class="star star_left" style="float : left;"></span>
+                    <span class="star star_right" style="float : left;"></span>
+
+                    <span class="star star_left" style="float : left;"></span>
+                    <span class="star star_right" style="float : left;"></span>
+
+                    <span class="star star_left" style="float : left;"></span>
+                    <span class="star star_right" style="float : left;"></span>
+                </div>
+                <div id="postText" style=" color:#FFFFFF; padding:15px 2px 10px 20px; font-size:25px; font-weight:bold;">후기 내용</div>
+        </div>
+        <div>
+            <h1 id="CategoryName" style=" color:#FFFFFF; padding:20px 2px 0 30px; font-size:40px; font-weight:bold;">추천 알바 목록</h1>
+        </div>
+        <div id="BusinessTable">
+            <div class="BusinessList">
+                <div class="BusinessItem" style="float: none; color : #FFFFFF; font-weight:bold;">
+                    <div class="Number">1</div>
+                    <div class="BusinessName">흑석 CU</div>
+                    <div class="FullAddress">서울특별시 동작구 흑석동 10</div>
+                </div>
+                <div class="BusinessItem" style="float: none; color : #FFFFFF; font-weight:bold;">
+                    <div class="Number">2</div>
+                    <div class="BusinessName">테스트!</div>
+                    <div class="FullAddress">서울특별시 동작구 흑석동 10</div>
+                </div>
+                <div class="BusinessItem" style="float: none; color : #FFFFFF; font-weight:bold;">
+                    <div class="Number">3</div>
+                    <div class="BusinessName">테스트!</div>
+                    <div class="FullAddress">서울특별시 동작구 흑석동 10</div>
+                </div>
+            </div>
+        </div>
+        </div>
+</body>
+<script src="/static/RecommandAlba.js"></script>
+</html>
