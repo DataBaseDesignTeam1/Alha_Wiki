@@ -1,4 +1,5 @@
 import { connection } from "../db";
+import routes from "../routes";
 
 export const main = (req, res, next) => {
     // console.log(req.params);    
@@ -137,7 +138,7 @@ export const select_business = (req, res, next) => {
 
 }
 
-export const alba_wiki = (req, res, next) => {
+export const get_alba_wiki = (req, res, next) => {
     var bigCategory_id = req.params.bigc_id;
     var smallCategory_id = req.params.smallc_id;
     var business_id = req.params.business_id;
@@ -165,7 +166,7 @@ export const alba_wiki = (req, res, next) => {
                 data: reviews
             }
             // console.log(data);
-            
+            // console.log(business[0]);
             res.render('albawiki', {
                 business: business[0],
                 reviews: data
@@ -173,9 +174,18 @@ export const alba_wiki = (req, res, next) => {
         });
     });
 }
+export const post_alba_wiki = (req, res, next) => {
+    res.send("123");
+}
+
+export const post_write_review = (req, res, next) => {
+    console.log(req.body);
+
+    
+}
 
 export const login = (req, res, next) => {
-    res.render(`login.html`);
+    res.render(`login`);
 }
 
 export const logout = (req, res, next) => {

@@ -57,3 +57,31 @@ $(document).ready(function () {
   });
 
 });
+
+const review_content = $('#review_content');
+const review_star_point = $('#review_star_point');
+const review_write = document.getElementById('review_write');
+
+review_write.addEventListener('click', async _ => {
+  console.log("click");
+
+  var allData = {  
+    content: review_content.val(), 
+    star_point: review_star_point.val(),
+    userId: localStorage.getItem('UserId')
+   };
+  var tmp = JSON.stringify(allData);
+  $.ajax({
+      type:"POST",
+      url: "http://localhost:4000/write_review",
+      data: tmp,
+      contentType  : "application/json",
+      cache : false,
+      processData: false,
+      success: function (data) {
+
+      },error:function(data){
+          alert("error");
+      }
+  }); 
+});
