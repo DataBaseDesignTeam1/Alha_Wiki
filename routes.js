@@ -16,10 +16,11 @@ const SIGNUP = "/signup";
 
 const RECOMMAND = "/recommand/:user_index";
 
-const WRITE_REVIEW = "/write_review"
+const ENROLL_MEMBER = "/enroll_member";
+const WRITE_REVIEW = "/write_review";
 
-const BIG_CATEGORY = "/category/:bigc_id"
-const SELECTBUSINESS = "/category/:bigc_id/:smallc_id"
+const BIG_CATEGORY = "/category/:bigc_id";
+const SELECTBUSINESS = "/category/:bigc_id/:smallc_id";
 const ALBA_WIKI = "/category/:bigc_id/:smallc_id/:business_id";
 
 const routes = {
@@ -30,6 +31,7 @@ const routes = {
     recommand: RECOMMAND,
 
     write_review: WRITE_REVIEW,
+    enroll_member: ENROLL_MEMBER,
 
     in_big_category: BIG_CATEGORY,
     select_business: SELECTBUSINESS,

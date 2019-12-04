@@ -1,6 +1,6 @@
 import express from "express";
 import routes from "../routes";
-import { main, login, logout, signup, in_big_category, select_business, post_alba_wiki, get_alba_wiki, post_write_review } from "../controllers/globalController";
+import { main, login, logout, signup, in_big_category, select_business, post_alba_wiki, get_alba_wiki, post_write_review, post_enroll_member } from "../controllers/globalController";
 import { connection } from "../db";
 
 const globalRouter = express.Router();
@@ -13,6 +13,9 @@ globalRouter.get(routes.logout, logout);
 globalRouter.get(routes.signup, signup);
 
 
+globalRouter.post(routes.enroll_member, post_enroll_member);
+
+
 globalRouter.get(routes.recommand, (req, res, next) => {
     var user_index = req.params.user_index;
 
@@ -23,7 +26,6 @@ globalRouter.get(routes.recommand, (req, res, next) => {
 
 
 globalRouter.get(routes.albawiki, get_alba_wiki);
-globalRouter.post(routes.albawiki, post_alba_wiki);
 
 globalRouter.post(routes.write_review, post_write_review);
 

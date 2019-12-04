@@ -135,7 +135,6 @@ export const select_business = (req, res, next) => {
             businesses: data
         });
     });
-
 }
 
 export const get_alba_wiki = (req, res, next) => {
@@ -174,9 +173,6 @@ export const get_alba_wiki = (req, res, next) => {
         });
     });
 }
-export const post_alba_wiki = (req, res, next) => {
-    res.send("123");
-}
 
 export const post_write_review = (req, res, next) => {
     console.log(req.body);
@@ -189,7 +185,6 @@ export const post_write_review = (req, res, next) => {
 
         var sql = `INSERT INTO review (content, star_point, write_date, business_index, id) VALUES (?, ?, ?, ?, ?)`;
 
-        
         var date = new Date();
         // console.log(`input_date : ${input_date}`);
         var content = req.body.content;
@@ -203,12 +198,31 @@ export const post_write_review = (req, res, next) => {
         connection.query(sql, params, (error, rows, fields) => {
             if(error) throw error;
 
-            console.log(rows);
+            console.log(`write a review`);
         });        
     });
+}
 
-    
-    
+export const post_enroll_member = (req, res, next) => {
+
+    console.log(req.body);
+
+    var sql = `INSERT INTO member (id, pw, name, age, state, city) VALUES (?, ?, ?, ?, ?, ?)`;
+
+    var id = req.body.id;
+    var pw = req.body.pw;
+    var age = req.body.age;
+    var name = req.body.name;
+    var state = req.body.state;
+    var city = req.body.city;
+
+    var params = [id, pw, name, age, state, city];
+
+    connection.query(sql, params,(error, results, fields) => {
+        if(error) throw error;
+
+        console.log('sign up new member');
+    });
 }
 
 export const login = (req, res, next) => {
@@ -220,6 +234,6 @@ export const logout = (req, res, next) => {
 }
 
 export const signup = (req, res, next) => {
-    res.render(`SignUp.html`);
+    res.render(`signup`);
 }
 
