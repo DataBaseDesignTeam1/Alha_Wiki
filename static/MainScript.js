@@ -38,7 +38,7 @@ $(document).ready(function(){
         localStorage.setItem("BigCategory", string);
         localStorage.setItem("State", $("#state option:selected").text());
         localStorage.setItem("City", $("#city option:selected").text());
-        location.href = "SelectCategory.html";
+        // location.href = "SelectCategory.html";
     });
     $("#state").change(function() {
         var state = $(this).val();

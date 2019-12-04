@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="jquery-3.4.1.min.js"></script>
-    <script src="SelectCategoryScript.js"></script>
+    <script src="/static/jquery-3.4.1.min.js"></script>
+    <script src="/static/SelectCategoryScript.js"></script>
     <title>Alba_Wiki</title>
     <style>
         html,
@@ -104,9 +104,7 @@
         </div>
         <div id="BigCategory">
             <h1 id="BigCategoryName">
-                <% if(bigname.data.length != 0){%>
-                <%= bigname.data[0].name%>
-                <%} %>
+                <%= bigCategory.data[0].name%>
             </h1>
         </div>
         <div id="SmallCategory">
@@ -119,7 +117,7 @@
                 <div class="SmallCategorys">
             <% } %>
 
-                <div class="SmallCategoryItem">
+                <div class="SmallCategoryItem" OnClick="location.href = `http://localhost:4000/category/<%= bigCategory.data[0].index%>/<%= small_categories.data[i].index%>`">
                     <%= small_categories.data[i].name %>
                 </div>
 

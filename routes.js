@@ -16,10 +16,10 @@ const SIGNUP = "/signup";
 
 const RECOMMAND = "/recommand/:user_index";
 
-const SELECTBUSINESS = "/category/:bigc_id/:smallc_id/:business_id";
-const ALBA_WIKI = "/category/:bigc_id/:smallc_id"
-const BIG_CATEGORY = "/category/:bigc_id"
 
+const BIG_CATEGORY = "/category/:bigc_id"
+const SELECTBUSINESS = "/category/:bigc_id/:smallc_id"
+const ALBA_WIKI = "/category/:bigc_id/:smallc_id/:business_id";
 
 const routes = {
     main: MAIN,
@@ -28,9 +28,9 @@ const routes = {
     signup: SIGNUP,
     recommand: RECOMMAND,
 
+    in_big_category: BIG_CATEGORY,
     select_business: SELECTBUSINESS,
-    albawiki: ALBA_WIKI,
-    in_big_category: BIG_CATEGORY
+    albawiki: ALBA_WIKI
 };
 
 export default routes;

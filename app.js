@@ -33,6 +33,7 @@ app.use(morgan("dev"));
 
 // app.engine('html', require(`ejs`).renderFile);
 // app.set(`view engine`, `html`);
+app.use("/static", express.static('./static'));
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
