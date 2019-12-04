@@ -108,25 +108,7 @@ margin-left: 15px;
         </div>
         <h1 id = "CategoryName" style=" color:#FFFFFF; padding:20px 2px 0 30px; font-size:40px; font-weight:bold;"></h1>
         <div id = "BusinessTable">
-            <% for(var i = 0; i < businesses.data.length; i++) { %>
-            
-                <% if(i % 3 == 0) {%>
-                    <% if(i != 0) {%>
-                    </div>
-                    <% } %>
-                    <div class="BusinessList">
-                <% } %>
-    
-                    <div class="BusinessItem" OnClick="location.href = `http://localhost:4000/category/<%= indexes.data.big_category_index%>/<%= indexes.data.small_category_index%>/<%= businesses.data[i].business_index%>`">
-                        <%= i+1 %>
-                        <div class = "BusinessName">
-                            <%= businesses.data[i].business_name %>
-                        </div>
-    
-                        <%= businesses.data[i].business_state + businesses.data[i].business_city + businesses.data[i].business_detail_address %>
-                    </div>
-        
-            <% } %>
+           
         </div>
     </div>
 </body>

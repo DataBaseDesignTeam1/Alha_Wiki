@@ -148,6 +148,8 @@ export const post_select_business = (req, res, next) => {
         small_category_index: smallCategory_id
     }
 
+    console.log(state +" " + city);
+
     var sql = `SELECT business_index, business_name, business_state, business_city, business_detail_address FROM business WHERE small_category_index=? AND business_state=? AND business_city=? ORDER BY business_index`;
     connection.query(sql, [smallCategory_id, state, city], (error, results, fields) => {
         if (error) throw error;

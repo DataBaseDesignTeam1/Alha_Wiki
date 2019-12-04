@@ -44,7 +44,7 @@ $(document).ready(function(){
                 if($("#state option:selected").val() != "" && "City", $("#city option:selected").val() != "" ){
                     localStorage.setItem("State", $("#state option:selected").text());
                     localStorage.setItem("City", $("#city option:selected").text());
-                    location.href = "http://localhost:4000/category/" + i+"" ;
+                    location.href = "http://localhost:4000/category/" + (i+1)+"" ;
                 }else{
                     alert("시/군 과 구/군을 선택해주세요");
                 }
