@@ -16,6 +16,7 @@ const SIGNUP = "/signup";
 
 const RECOMMAND = "/recommand/:user_index";
 
+const WRITE_REVIEW = "/write_review"
 
 const BIG_CATEGORY = "/category/:bigc_id"
 const SELECTBUSINESS = "/category/:bigc_id/:smallc_id"
@@ -27,6 +28,8 @@ const routes = {
     logout: LOGOUT,
     signup: SIGNUP,
     recommand: RECOMMAND,
+
+    write_review: WRITE_REVIEW,
 
     in_big_category: BIG_CATEGORY,
     select_business: SELECTBUSINESS,

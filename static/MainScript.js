@@ -72,7 +72,7 @@ $(document).ready(function(){
     })
     $(document).on("click","#Login",function(){
         localStorage.setItem('beforeLoginPage',"Main.html");
-        location.href = "login.html";
+        location.href = "http://localhost:4000/login";
     });
     $('#RecommandSection').click(function(){
         UserId = localStorage.getItem("UserId");

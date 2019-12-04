@@ -36,6 +36,8 @@ app.use(morgan("dev"));
 // app.set(`view engine`, `html`);
 app.use("/static", express.static('./static'));
 
+app.locals.routes = routes;
+
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
