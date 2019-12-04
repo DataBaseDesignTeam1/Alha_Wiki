@@ -3,7 +3,7 @@ $(document).ready(function(){
         var Id = $('#Id').val();
         localStorage.setItem("UserId",Id);
         //window.history.back();
-        location.href = "http://localhost:4000/";
+        location.href = localStorage.getItem("URL");
     });
     $('#SignUpBtn').click(function(){
         //location.href = "SignUp.html";
