@@ -25,11 +25,10 @@ globalRouter.get(routes.in_big_category, in_big_category);
 
 globalRouter.get(routes.main, main);
 
-
 globalRouter.post(routes.enroll_member, post_enroll_member);
 
 globalRouter.post(routes.write_review, post_write_review);
 
-    globalRouter.post(routes.update_tip, post_update_tip);
+globalRouter.post(routes.update_tip, post_update_tip);
 
 export default globalRouter;

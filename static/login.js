@@ -31,4 +31,7 @@ $(document).ready(function(){
         //location.href = "SignUp.html";
         location.href = "http://localhost:4000/signup";
     });
+    $('#IdCheck').click(function(){
+
+    });
 });
