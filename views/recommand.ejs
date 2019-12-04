@@ -136,13 +136,13 @@
             flex-grow: 1;
         }
 
-        .MyReviewList {
+        .MyReviewList, .OtherReviewList{
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
-        .BusinessItem {
+        .MyReviewItem, .OtherReviewItem{
             line-height: 80px;
             margin: 10px;
             box-shadow: 0 0 0 0.1rem powderblue;
@@ -191,33 +191,18 @@
         <div id="MainHeader"></div>
         <div>
             <h1 id="CategoryName" style=" color:#FFFFFF; padding:20px 2px 0 30px; font-size:40px; font-weight:bold;">나의 알바 후기 작성 목록</h1>
-        </div>
-
-        <div class="Post">
-            
-                <div class="star-box" >
-                    <span class="star star_left" style="float : left;"></span>
-                    <span class="star star_right"style="float : left;"></span>
-
-                    <span class="star star_left"style="float : left;"></span>
-                    <span class="star star_right"style="float : left;"></span>
-
-                    <span class="star star_left" style="float : left;"></span>
-                    <span class="star star_right" style="float : left;"></span>
-
-                    <span class="star star_left" style="float : left;"></span>
-                    <span class="star star_right" style="float : left;"></span>
-
-                    <span class="star star_left" style="float : left;"></span>
-                    <span class="star star_right" style="float : left;"></span>
+            <div id="MyReviewTable">
+                <div class="MyReviewList">
+                        
                 </div>
-                <div id="postText" style=" color:#FFFFFF; padding:15px 2px 10px 20px; font-size:25px; font-weight:bold;">후기 내용</div>
+            </div>
+        
         </div>
         <div>
             <h1 id="CategoryName" style=" color:#FFFFFF; padding:20px 2px 0 30px; font-size:40px; font-weight:bold;">추천 알바 목록</h1>
         </div>
-        <div id="MyReviewTable">
-            <div class="MyReviewList">
+        <div id="OhterReviewTable">
+            <div class="OhterReviewList">
                 
             </div>
         </div>
