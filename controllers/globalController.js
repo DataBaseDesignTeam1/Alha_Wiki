@@ -148,12 +148,12 @@ export const post_select_business = (req, res, next) => {
         small_category_index: smallCategory_id
     }
 
-    console.log(state + " " + city);
+    // console.log(state + " " + city);
 
     var sql = `SELECT business_index, business_name, business_state, business_city, business_detail_address FROM business WHERE small_category_index=? AND business_state=? AND business_city=? ORDER BY business_index`;
     connection.query(sql, [smallCategory_id, state, city], (error, results, fields) => {
         if (error) throw error;
-        console.log(results);
+        // console.log(results);
         var businesses = new Array();
         results.forEach(element => {
             var business = {
@@ -360,7 +360,7 @@ export const get_recommand = (req, res, next) => {
 export const post_recommand = (req, res, next) => {
     var user_id = req.body.id;
 
-    var sql = `SELECT a.content, a.star_point, a.write_date, a.business_index, c.business_name, b.name, c.small_category_index, d.big_category_index 
+    var sql = `SELECT a.content, a.star_point, a.write_date, a.business_index, c.business_name, b.name, c.state, c.city, c.small_category_index, d.big_category_index 
     FROM review AS a JOIN member AS b ON a.id = b.id JOIN business AS c ON a.business_index = c.business_index JOIN small_category AS d ON c.small_category_index = d.small_category_index
     WHERE a.id = ? ORDER BY a.write_date DESC`;
     connection.query(sql, [user_id], (error, writes, fields) => {
@@ -373,6 +373,8 @@ export const post_recommand = (req, res, next) => {
                 star_point: element.star_point,
                 write_date: element.write_date,
                 name: element.name,
+                state: element.state,
+                city: element.city,
                 business_name: element.business_name,
                 business_index: element.business_index,
                 small_category_index: element.small_category_index,
@@ -385,7 +387,7 @@ export const post_recommand = (req, res, next) => {
             data: reviews
         }
 
-        var sql = `SELECT a.content, a.star_point, a.write_date, a.business_index, c.business_name, b.name, c.small_category_index, d.big_category_index 
+        var sql = `SELECT a.content, a.star_point, a.write_date, a.business_index, c.business_name, b.name, c.state, c.city, c.small_category_index, d.big_category_index 
         FROM review AS a JOIN member AS b ON a.id = b.id JOIN business AS c ON a.business_index = c.business_index JOIN small_category AS d ON c.small_category_index = d.small_category_index
         WHERE a.id != ? ORDER BY star_point DESC, a.write_date DESC`;
         connection.query(sql, [ user_id ], (error, results, fields) => {
@@ -400,6 +402,8 @@ export const post_recommand = (req, res, next) => {
                     star_point: results[i].star_point,
                     write_date: results[i].write_date,
                     name: results[i].name,
+                    state: results[i].state,
+                    city: results[i].city,
                     business_name: results[i].business_name,
                     business_index: results[i].business_index,
                     small_category_index: results[i].small_category_index,

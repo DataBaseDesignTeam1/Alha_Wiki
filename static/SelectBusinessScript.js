@@ -35,13 +35,13 @@ $(document).ready(function(){
         var businesses = data.data;
         for(var i = 0; i < businesses.length ; i++){
             if(i%3 == 0){
-                $('#BusinessTable').append('<div class="BusinessList"> <div class="BusinessItem" value="'+businesses[i].business_index+'"  style="float: none; color : #FFFFFF; font-weight:bold;"><div class="Number">'+(i+1)+'</div> <div class="BusinessName">'+businesses[i].business_name+'</div><br> <div class="FullAddress">'+businesses[i].business_detail_address+'</div> </div>');
+                $('#BusinessTable').append('<div class="BusinessList"> <div class="BusinessItem" value="'+businesses[i].business_index+'"  style="float: none; color : #FFFFFF; font-weight:bold;"><div class="Number">'+(i+1)+'</div> <div class="BusinessName">'+businesses[i].business_name+'</div><br> <div class="FullAddress">'+"\n"+businesses[i].business_detail_address+'</div> </div>');
             }else if(i%3 == 1){
                 var idx = parseInt(i/3);
-                 $($('.BusinessList')[idx]).append('<div class="BusinessItem" value="'+businesses[i].business_index+'" style="float: none; color : #FFFFFF; font-weight:bold;"><div class="Number">'+(i+1)+'</div> <div class="BusinessName">'+businesses[i].business_name+'</div><br> <div class="FullAddress">'+businesses[i].business_detail_address+'</div> </div>');
+                 $($('.BusinessList')[idx]).append('<div class="BusinessItem" value="'+businesses[i].business_index+'" style="float: none; color : #FFFFFF; font-weight:bold;"><div class="Number">'+(i+1)+'</div> <div class="BusinessName">'+businesses[i].business_name+'</div><br> <div class="FullAddress">'+"\n"+businesses[i].business_detail_address+'</div> </div>');
             }else{
                 var idx = parseInt(i/3);
-                 $($('.BusinessList')[idx]).append('<div class="BusinessItem" value="'+businesses[i].business_index+'" style="float: none; color : #FFFFFF; font-weight:bold;"><div class="Number">'+(i+1)+'</div> <div class="BusinessName">'+businesses[i].business_name+'</div><br> <div class="FullAddress">'+businesses[i].business_detail_address+'</div> </div>');
+                 $($('.BusinessList')[idx]).append('<div class="BusinessItem" value="'+businesses[i].business_index+'" style="float: none; color : #FFFFFF; font-weight:bold;"><div class="Number">'+(i+1)+'</div> <div class="BusinessName">'+businesses[i].business_name+'</div><br> <div class="FullAddress">'+"\n"+businesses[i].business_detail_address+'</div> </div>');
             }
         }
       
