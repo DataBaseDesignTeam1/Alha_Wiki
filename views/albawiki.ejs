@@ -257,9 +257,21 @@
                     </div>
                     <% reviews.data.forEach( review => { %>
                         <div class = "PostItem">
-                            <% for(var i = 0; i < review.star_point; i++) { %>
-                                <span class="stared star_left"></span>
-                                <span class="stared star_right"></span>
+                            <% for(var i = 0; i < 10; i++) { %>
+                                <%console.log(review.star_point)%>
+                                <%if(i%2 == 0 ){ %>
+                                    <%if(i < review.star_point){ %>
+                                        <span class="stared star_left on"></span>
+                                    <% }else{ %>
+                                        <span class="stared star_left"></span>
+                                    <% } %>
+                                <% }else{ %>
+                                    <%if(i < review.star_point){ %>
+                                        <span class="stared star_right on"></span>
+                                    <% }else{ %>
+                                        <span class="stared star_right"></span>
+                                    <% } %>
+                                <% } %>
                             <% } %>
                             <h1><%= review.writer + " " + review.write_date %></h1>
                             <h4><%= review.content %></h4>
