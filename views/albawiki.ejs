@@ -204,16 +204,23 @@
                             URL
                         </div>
                         <div id = "URLText">
-                            <input type="text" name="URL" id="URL" value="<%= business.recruit_url %>" >
+                            
+                            <input type="text" name = "URL" id="URL" value="<%= business.recruit_url %>" >
                         </div>
                         <div id = "IsRecruit">
                             <div>
                                 <input type="button" value="작성" id = "UpdateTip">
                             </div>
+                            <% if(business.is_recruting == "1") { %>
+                                <input type="checkbox" name="" id="Recruit" value = "true" checked>
+                            <%}%>
                             <input type="checkbox" name="" id="Recruit" value = "true">
                             <div id= "RecruitHead">
                                     구직중
                             </div>
+                        </div>
+                        <div>
+                            업데이트 날짜 : <%= business.update_date %> (작성자 : <%= business.name %> )             
                         </div>
                     </div>
             </div>
