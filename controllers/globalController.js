@@ -183,11 +183,12 @@ export const get_alba_wiki = (req, res, next) => {
     var smallCategory_id = req.params.smallc_id;
     var business_id = req.params.business_id;
 
+    console.log(business_id);
     var sql = `SELECT a.business_name, a.tip, recruit_url, a.is_recruiting, a.update_date, a.update_id, b.name
-    FROM business AS a JOIN member AS b ON a.update_id = b.id WHERE a.business_index=?`;
+    FROM business AS a LEFT JOIN member AS b ON a.update_id = b.id WHERE a.business_index=?`;
     connection.query(sql, [ business_id ], (error, business, fields) => {
         if (error) throw error;
-        // console.log(business);
+        console.log(business);
         var sql = `SELECT a.content, a.star_point, a.write_date, b.name FROM review AS a JOIN member AS b ON a.id = b.id WHERE a.business_index = ?`;
         connection.query(sql, [business_id], (error, results, fields) => {
             if (error) throw error;

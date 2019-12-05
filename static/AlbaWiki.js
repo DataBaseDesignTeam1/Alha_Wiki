@@ -19,8 +19,8 @@ $(document).ready(function () {
   $('#CategoryName').append(localStorage.getItem("BigCategory") + localStorage.getItem("SmallCategory") + "(" + localStorage.getItem("State") + ", " + localStorage.getItem("City") + "-" + localStorage.getItem("Business") + ")");
   $(".star").on('click', function () {
     var idx = $(this).index();
-    console.log($(".star"));
-    console.log(idx);
+    // console.log($(".star"));
+    // console.log(idx);
     $(".star").removeClass("on");
     for (var i = 0; i <= idx; i++) {
       $(".star").eq(i).addClass("on");
