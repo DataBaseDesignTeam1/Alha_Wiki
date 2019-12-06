@@ -204,8 +204,7 @@
                             URL
                         </div>
                         <div id = "URLText">
-                            
-                            <input type="text" name = "URL" id="URL" value="<%= business.recruit_url %>" >
+                            <input type="text" name = "URL" id="URL" value="<%= business.recruit_url %>"  readonly="readonly" >
                         </div>
                         <div id = "IsRecruit">
                             <div>
@@ -244,18 +243,13 @@
                         <span class="star star_right"></span>
                     </div>
                     <div id = "postText">
-                        <div>
-                            <textarea name="post" id="post" cols="100" rows="5"></textarea>
-                        </div>
-                        <div>
-                            <button id = "PostButton">작성</button>
-                        </div>
-                    </div>
-                    <div id = "postText">
                         <form action="" method="POST">
-                            <input id="review_content" type="text" name="content" placeholder="후기를 써 주세요">
-                            <input id="review_star_point" type="number" name="star_point" placeholder="별점을 매겨주세요">
-                            <input id="review_write" type="button", value="작성">
+                                <div>
+                                        <textarea type="text" name="post" id="review_content" cols="100" rows="5" placeholder="후기를 써 주세요"></textarea>
+                                    </div>
+                                    <div>
+                                        <button id="review_write" type="button", value="작성">작성</button>
+                                    </div>
                         </form>
                     </div>
                     <% reviews.data.forEach( review => { %>

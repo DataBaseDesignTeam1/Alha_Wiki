@@ -14,13 +14,12 @@ $(document).ready(function(){
             processData: false,
             success: function (data) {
                 if(data == "1"){
-                    console.log("로그인 완료");
                     localStorage.setItem("UserId",id);
                     var URL = localStorage.getItem("beforeLoginPage");
                     //window.history.back();    
                     location.href = URL;
                 }else{
-                    console.log("로그인 실패");
+                    alert("로그인 실패");
                 }  
             },error:function(data){
                 alert("error");
